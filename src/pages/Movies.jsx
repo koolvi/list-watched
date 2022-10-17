@@ -3,6 +3,9 @@ import { withStyles } from '@material-ui/core/styles';
 import MainButton from '../components/buttons/MainButton';
 import IconButton from '../components/buttons/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import MovieCard from '../components/MovieCard';
 import colors from '../colors';
@@ -11,8 +14,37 @@ import colors from '../colors';
 const Movies = (props) => {
     const { classes, onClickBack } = props;
 
+    // модальное окно
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const style = {
+      position: 'absolute',
+      top: '80px',
+      left: '200px',
+      // top: '50%',
+      // left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: 200,
+      bgcolor: 'background.paper',
+      // border: '2px solid #000',
+      borderRadius: '10px',
+      boxShadow: 24,
+      p: 4,
+    };
+
     return (
       <div className={classes.container}>
+
+        <Modal
+          open={open}
+          onClose={handleClose}
+        >
+          <Box sx={style}>
+            12345
+          </Box>
+        </Modal>
+
         <div className={classes.headerContainer}>
           <div className={classes.headerIcon}>
             <IconButton
@@ -24,7 +56,10 @@ const Movies = (props) => {
             Фильмы
           </div>
           <div className={classes.menu}>
-           <MenuIcon style={{color: colors.PRIMARY}}/>
+            <MenuIcon
+              style={{color: colors.PRIMARY}}
+              onClick={handleOpen}
+            />
           </div>
         </div>
 
