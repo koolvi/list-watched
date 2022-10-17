@@ -2,6 +2,10 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import MainButton from '../components/buttons/MainButton';
 import IconButton from '../components/buttons/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
+import MovieCard from '../components/MovieCard';
+import colors from '../colors';
 
 
 const Movies = (props) => {
@@ -9,12 +13,52 @@ const Movies = (props) => {
 
     return (
       <div className={classes.container}>
-        Фильмы
-        <MainButton
-            text='Назад'
-            onClick={() => onClickBack(0)}
-        />
-        <IconButton onClickBack={() => onClickBack(0)}/>
+        <div className={classes.headerContainer}>
+          <div className={classes.headerIcon}>
+            <IconButton
+              style={{color: colors.PRIMARY}}
+              onClickBack={() => onClickBack(0)}
+            />
+          </div>
+          <div className={classes.header}>
+            Фильмы
+          </div>
+          <div className={classes.menu}>
+           <MenuIcon style={{color: colors.PRIMARY}}/>
+          </div>
+        </div>
+
+        <div className={classes.content}>
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+          <MovieCard />
+
+          {/* wasted time - потрачено времени */}
+          <div className={classes.wasted_time}>
+            <div className={classes.text}>Потрачено на фильмы:</div>
+            <div className={classes.time}>2 часа 35 мин</div>
+          </div>
+        </div>
+
+{/* НЕ УДАЛЯЙ - ЭТО ДЛЯ ПУСТОГО СПИСКА */}
+        {/* 
+          <div className={classes.emptyList}>
+            <p>Список фильмов пуст</p>
+            <SentimentNeutralIcon style={{color: '#f0f0f0', width: '50px', height: '50px'}}/>
+          </div>
+         */}
+
+        <div className={classes.footerContainer}>        
+          <MainButton
+            text='Добавить'
+            // onClick={() => onClickBack(0)}
+          />
+        </div>
       </div>
     );
   }
@@ -22,7 +66,77 @@ const Movies = (props) => {
 const styles = {
   container: {
     height: '100%',
-    background: 'green',
+    // background: 'green',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  headerContainer: {
+    display: 'flex',
+    // background: 'gray',
+    paddingTop: '10px',
+    paddingBottom: '10px',
+    // marginLeft: '20px',
+    boxShadow: '-2px 0px 5px 0px rgba(0, 0, 0, 0.2)',
+    alignItems: 'center',
+    // прижать шапку сверху
+    // position: 'fixed',
+    // top: '0px',
+    width: '100%',
+    // 'Z-index: '20',
+  },
+  headerIcon: {
+    paddingLeft: '20px',
+  },
+  header: {
+    marginLeft: '10px',
+    fontWeight: 500,
+    fontSize: '20px',
+    flex: 1,
+  },
+  menu: {
+    paddingRight: '20px',
+  },
+  content: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '300px',
+    // maxHeight: '700px',
+    overflowY: 'scroll', /* Добавляем полосы прокрутки */
+    // overflow: 'scroll',
+    // flex: 1,
+    // width: '100%',
+  },
+  wasted_time: {
+    display: 'flex',
+    flexDirection: 'column',
+    color: colors.SECONDARY,
+    marginTop: '50px',
+    marginBottom: '120px',
+    alignItems: 'center',
+    fontSize: '14px',
+  },
+  text: {
+    // color: colors.SECONDARY,
+  },
+  time: {},
+  emptyList: {
+    display: 'flex',
+    flexDirection: 'column',
+    // background: 'yellow',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: colors.SECONDARY,
+  },
+  footerContainer: {
+    background: 'white',
+    paddingTop: '15px',
+    paddingBottom: '15px',
+    boxShadow: '0px -2px 5px 0px rgba(0, 0, 0, 0.2)',
+    // прижать кнопку снизу
+    position: 'fixed',
+    bottom: '0px',
+    width: '100%',
   },
 };
 

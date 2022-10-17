@@ -4,13 +4,12 @@ import ButtonMUI from '@material-ui/core/Button';
 import colors from '../../colors';
 
 
-const MainButton = (props) => {
+const MediumButton = (props) => {
   const {
     classes,
     disabled = false,
     variant = 'contained',
     size = 'small',
-    text = 'Далее',
     color = '',
     ...rest
   } = props;
@@ -23,10 +22,11 @@ const MainButton = (props) => {
         className={classes.button}
         color={color}
         disabled={disabled}
+        style={{ fontSize: '12px' }}
         // disabled={false}
         {...rest}
       >
-        {text}
+        Выбрать
       </ButtonMUI>
     </div>
   );
@@ -37,10 +37,11 @@ const styles = {
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
+    marginTop: '15px',
   },
   button: {
-    width: '70%',
-    height: '50px',
+    width: '80px',
+    height: '30px',
     borderRadius: '5px',
     // background: '#0089c4',
     background: colors.PRIMARY,
@@ -49,4 +50,4 @@ const styles = {
   },
 };
 
-export default withStyles(styles)(MainButton);
+export default withStyles(styles)(MediumButton);

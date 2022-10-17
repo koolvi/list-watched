@@ -5,16 +5,14 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBackIos';
 
 
 const IconButton = (props) => {
-    const { onClickBack } = props;
-
-    return (
-        <div>
-            12345
-            <IconButtonMUI  onClick={() => console.log(123)} aria-label="delete">
-                <ArrowBackIcon onClick={() => onClickBack()}/>
-            </IconButtonMUI>
-        </div>
-    );
+  const { onClickBack, style } = props;
+  return (
+    <div>
+      <IconButtonMUI  onClick={() => console.log(123)} aria-label="delete" style={style}>
+        <ArrowBackIcon onClick={() => onClickBack()}/>
+      </IconButtonMUI>
+    </div>
+  );
 };
 
 // export default withStyles(IconButton);

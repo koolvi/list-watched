@@ -45,7 +45,7 @@ const styles = {
   buttons: {
     display: 'flex',
     flexDirection: 'column',
-    height: '150px',
+    height: '130px',
     justifyContent: 'space-between',
   },
   text: {
